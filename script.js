@@ -1,9 +1,9 @@
 // Add event listener after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function() {
     // Add event listener for "Add to Cart" button
-    var addToCartBtn = document.getElementById("add-to-cart");
-    if (addToCartBtn) {
-      addToCartBtn.addEventListener("click", addToCart);
+    var addToCartBtns = document.getElementsByClassName("add-to-cart");
+    for (var i = 0; i < addToCartBtns.length; i++) {
+      addToCartBtns[i].addEventListener("click", addToCart);
     }
   
     // Retrieve cart data from local storage
@@ -14,27 +14,58 @@ document.addEventListener("DOMContentLoaded", function() {
     if (window.location.pathname.includes("checkout.html")) {
       displayCartItems(cartItems);
     }
+  
+    // Add event listeners to size buttons
+    var sizeButtons = document.getElementsByClassName("size-btn");
+    for (var i = 0; i < sizeButtons.length; i++) {
+      sizeButtons[i].addEventListener("click", function(event) {
+        selectSize(event.target.textContent);
+      });
+    }
   });
   
+  function selectSize(size) {
+    var sizeButtons = document.getElementsByClassName("size-btn");
+    for (var i = 0; i < sizeButtons.length; i++) {
+      if (sizeButtons[i].textContent === size) {
+        sizeButtons[i].classList.add("selected");
+      } else {
+        sizeButtons[i].classList.remove("selected");
+      }
+    }
+  }
+  
   function addToCart() {
-    var selectedSize = document.getElementById("size").value;
-    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    var selectedSize = "";
+    var sizeButtons = document.getElementsByClassName("size-btn");
+    for (var i = 0; i < sizeButtons.length; i++) {
+      if (sizeButtons[i].classList.contains("selected")) {
+        selectedSize = sizeButtons[i].textContent;
+        break;
+      }
+    }
   
-    cartItems.push({
-      size: selectedSize,
-      price: 19.99
-    });
+    if (selectedSize !== "") {
+      var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
   
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      cartItems.push({
+        size: selectedSize,
+        price: 19.99,
+        item: "Madonna Tee"
+      });
   
-    updateCartCount(cartItems.length);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  
+      updateCartCount(cartItems.length);
+      if (window.location.pathname.includes("checkout.html")) {
+        displayCartItems(cartItems);
+      }
+    }
   }
   
   function updateCartCount(count) {
     var cartCount = document.getElementById("cart-count");
-    if (cartCount) {
-      cartCount.textContent = count.toString();
-    }
+    cartCount.textContent = count.toString();
   }
   
   function displayCartItems(cartItems) {
@@ -45,14 +76,16 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       var totalPrice = 0;
   
-      cartItems.forEach(function(item) {
+      cartItemsContainer.innerHTML = ""; // Clear the container before updating
+  
+      cartItems.forEach(function(item, index) {
         cartItemsContainer.innerHTML += `
           <div class="cart-item">
             <p>Size: ${item.size}</p>
             <p>Price: $${(item.price || 0).toFixed(2)}</p>
           </div>
-          <button class="remove-btn">Remove</button>
-          <button class="add-btn">Add</button>
+          <button class="remove-btn" onclick="removeCartItem(${index})">Remove</button>
+          <button class="add-btn" onclick="addCartItem(${index})">Add</button>
         `;
   
         totalPrice += item.price || 0;
@@ -64,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var removeButtons = document.getElementsByClassName("remove-btn");
       var addButtons = document.getElementsByClassName("add-btn");
   
-      for (let i = 0; i < removeButtons.length; i++) {
+      for (var i = 0; i < removeButtons.length; i++) {
         removeButtons[i].addEventListener("click", function() {
           removeCartItem(i);
         });
@@ -74,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
   }
-  
   
   function removeCartItem(index) {
     var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
