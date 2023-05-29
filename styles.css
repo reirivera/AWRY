@@ -1,10 +1,11 @@
 body{
     margin: 0;
     font-family:Arial, Helvetica, sans-serif;
-    background-color: aliceblue;
+    background-color: #BCBCBC;
 }
 .container{
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
     padding: 10px 50px 10px 50px;
 }
@@ -24,6 +25,7 @@ nav{
     flex-direction: column;
     padding-left: 100px;
     font-size: 3em;
+    width: 50%;
 }
 
 .links-home{
@@ -32,14 +34,28 @@ nav{
 
 .links-home:hover{
     text-decoration: line-through;
+    text-decoration-thickness: 50px; 
 }
 .title{
     font-size: 3m;
     font-weight: 200;
 }
 
-.licence{
-    position: absolute;
+.bottom-home{
    bottom: 10px;
-   right: 50px;
+   display: flex;
+   justify-content: space-between;
+
+}
+
+#time{
+    position: fixed;
+    bottom: 10px;
+    left: 50px;
+}
+
+.licence{
+    position: fixed;
+    bottom: 10px;
+    right: 50px;
 }

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Awery studio</title>
+  <title>Awry studio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
 
     <nav>
-      <h1 class="title">© awery studio</h1>
+      <h1 class="title">© awry studio</h1>
       <div id="cart">
         <a href="checkout.html">
           cart <span id="cart-count">0</span>
@@ -17,17 +17,30 @@
     </nav>
     <div class="second_nav">
       <a class="links-home" href="services.html">services</a>
-      <a class="links-home" href="madonnaTee.html">shop</a>
       <a class="links-home" href="works.html">selected works</a>
       <a class="links-home" href="madonnaTee.html">shop</a>
       <a class="links-home" href="information.html">informations</a>
       <a class="links-home" href="conatact.html">contact</a>
     </div>
-   <p class="licence">
-    @ 2023 awery studio. all rights reversed
-   </p>
-  
+<div class="bottom-home">
+        <p id="time"></p>
+        <p class="licence">
+          @ 2023 awry studio. all rights reversed
+        </p>
+</div>
+      
+
     <script src="script.js"></script>
+    <script>
+  function updateTime() {
+      var currentTime = new Date();
+      var timeElement = document.getElementById("time");
+      timeElement.textContent = currentTime.toLocaleTimeString();
+    }
+
+    // Update the time every second
+    setInterval(updateTime, 1000);
+    </script>
 
   </div>
 
