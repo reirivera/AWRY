@@ -1,6 +1,7 @@
 body{
     margin: 0;
     font-family:Arial, Helvetica, sans-serif;
+    font-size: 1em;
     background-color: #BCBCBC;
 }
 .container{
@@ -37,7 +38,6 @@ nav{
     text-decoration-thickness: 50px; 
 }
 .title{
-    font-size: 3m;
     font-weight: 200;
 }
 
@@ -52,6 +52,7 @@ nav{
     position: fixed;
     bottom: 10px;
     left: 50px;
+    font-size: 1em;
 }
 
 .licence{
