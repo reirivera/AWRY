@@ -11,36 +11,140 @@
       <h1 class="title">awry.studio</h1>
       <div id="cart">
         <a href="checkout.html">
-          cart <span id="cart-count">0</span>
+          cart.<span id="cart-count">0</span>
         </a>
       </div>
     </nav>
     <div class="second_nav">
-      <a class="links-home" href="services.html">services</a>
-      <a class="links-home" href="works.html">selected works</a>
-      <a class="links-home" href="madonnaTee.html">shop</a>
-      <a class="links-home" href="information.html">informations</a>
-      <a class="links-home" href="conatact.html">contact</a>
+
+      <a class="links-home" id="services-link">services</a>
+      <div id="services-message" class="flex-second_nav" style="display: none;">
+        animation & motion Graphics <br>
+        brand Identity & packaging. <br>
+        experiential design <br>
+        graphic & print Design <br>
+        photography & video direction <br>
+        web & digital Design <br>
+
+      </div>
+
+      <a class="links-home" id="works-link" href="works.html">selected works</a>
+      <div id="works-message" class="flex-second_nav" style="display: none;">Your specific message for works</div>
+      
+      <a class="links-home" id="shop-link" href="madonnaTee.html">shop</a>
+      <div id="shop-message" class="flex-second_nav" style="display: none;">
+        
+        <div class="product-container">
+        <!-- Product details -->
+        <h2 class="product-title">Madonna Tee</h2>
+        <p class="product-description">Description: This is a cool Madonna themed t-shirt.</p>
+        <p class="product-price">Price: $19.99</p>
+      
+        <!-- Size selection -->
+        <div id="size-selection" class="size-buttons">
+          <button class="size-btn">S</button>
+          <button class="size-btn">M</button>
+          <button class="size-btn">L</button>
+          <button class="size-btn">XL</button>
+        </div>
+      
+        <!-- Add to Cart button -->
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+      
+      <a class="links-home" id="info-link" href="information.html">informations</a>
+      <div id="info-message" class="flex-second_nav" style="display: none;">Your specific message for informations</div>
+      
+      <a class="links-home" id="contact-link" href="contact.html">contact</a>
+      <div id="contact-message" class="flex-second_nav" style="display: none;">Your specific message for contact</div>
+</div>
+
     </div>
 <div class="bottom-home">
         <p id="time"></p>
         <p class="licence">
-          @ 2023 awry studio. all rights reversed
+          @ 2023 awry.studio all rights reversed
         </p>
 </div>
+
+
       
 
     <script src="script.js"></script>
-    <script>
-  function updateTime() {
-      var currentTime = new Date();
-      var timeElement = document.getElementById("time");
-      timeElement.textContent = currentTime.toLocaleTimeString();
-    }
 
-    // Update the time every second
-    setInterval(updateTime, 1000);
-    </script>
+
+      <script>
+        function updateTime() {
+            var currentTime = new Date();
+            var timeElement = document.getElementById("time");
+            timeElement.textContent = currentTime.toLocaleTimeString();
+          }
+
+          // Update the time every second
+          setInterval(updateTime, 1000);
+
+          document.addEventListener("DOMContentLoaded", function() {
+          // Add click event handler to services link
+          var servicesLink = document.getElementById("services-link");
+          var servicesMessage = document.getElementById("services-message");
+
+          servicesLink.addEventListener("click", function(e) {
+            e.preventDefault(); // Prevent the default link behavior
+
+            // Toggle the visibility of the services message
+            if (servicesMessage.style.display === "none") {
+              servicesMessage.style.display = "block";
+            } else {
+              servicesMessage.style.display = "none";
+            }
+          });
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+  // Add click event handlers to the links
+  var worksLink = document.getElementById("works-link");
+  var shopLink = document.getElementById("shop-link");
+  var infoLink = document.getElementById("info-link");
+  var contactLink = document.getElementById("contact-link");
+
+  // Event handler for works link
+  worksLink.addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent the default link behavior
+
+    // Toggle the visibility of the works message
+    var worksMessage = document.getElementById("works-message");
+    worksMessage.style.display = worksMessage.style.display === "none" ? "block" : "none";
+  });
+
+  // Event handler for shop link
+  shopLink.addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent the default link behavior
+
+    // Toggle the visibility of the shop message
+    var shopMessage = document.getElementById("shop-message");
+    shopMessage.style.display = shopMessage.style.display === "none" ? "block" : "none";
+  });
+
+  // Event handler for info link
+  infoLink.addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent the default link behavior
+
+    // Toggle the visibility of the info message
+    var infoMessage = document.getElementById("info-message");
+    infoMessage.style.display = infoMessage.style.display === "none" ? "block" : "none";
+  });
+
+  // Event handler for contact link
+  contactLink.addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent the default link behavior
+
+    // Toggle the visibility of the contact message
+    var contactMessage = document.getElementById("contact-message");
+    contactMessage.style.display = contactMessage.style.display === "none" ? "block" : "none";
+  });
+});
+
+      </script>
 
   </div>
 
