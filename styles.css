@@ -5,6 +5,7 @@ body{
     background-color: #efefef;
     font-weight: 200;
 }
+
 .container{
     display: flex;
     justify-content: space-around;
@@ -25,7 +26,7 @@ nav{
 .second_nav{
     display: flex;
     flex-direction: column;
-    padding-left: 100px;
+    padding-left: 110px;
     font-size: 2.5em;
     width: 50%;
 }
@@ -36,19 +37,24 @@ nav{
 
 .links-home:hover{
     text-decoration: line-through;
-    text-decoration-thickness: 10px; 
+    text-decoration-thickness: 50px; 
 }
 .flex-second_nav {
     display: none;
     font-size: 16px;
-    padding-left: 20px;
+    columns: 2;
+    column-gap: 20px;
+    padding: 5px 0 0 20px;
+    line-height: 25px;
+    width: 510px
 
   }
 
-.txt-second_nav{
-    font-size: 16px;
-    padding-left: 20px;
-}
+
+  #services-message{
+      display: flex;
+  }
+
 
 .title{
     font-weight: 300;
